@@ -1,0 +1,85 @@
+h1{
+	text-align: center;
+	color: #f0f0f0;
+
+}
+
+#divtop{
+	padding-top: 35px;
+	background-color: #544d56;
+	height: 50px;
+	font: 35px Arial sans-serif;
+}
+
+#mid{
+	padding-top: 100px;
+	display: block;
+	height: 800px;
+	width: 100%;
+	background-color: #f0f0f0;
+}
+
+#table{
+	margin: 0px auto;
+	display: block;
+	height: 600px;
+	width: 1000px;
+	border-radius: 200px;
+	border: 15px solid black;
+	background-color: #6b1f3c;
+}
+
+#footer{
+
+	background-color: #544d56;
+	width: 100%;
+	height: 100px;
+
+}
+
+#cardstop, #cardsbot{
+	width: 600px;
+	height: 200px;
+	/*background-color: #f0f0f0; */
+}
+
+#cardstop{
+	margin: 25px auto;
+}
+
+#cardsbot{
+	margin: 25px auto;
+}
+
+.cardsDealer, .cardsPlayer{
+	font-size: 25px;
+	font-family: sans-serif;
+	margin-top: 10px;
+	margin-left: 50px;
+	padding-left: 15px;
+	padding-top: 15px;
+	display: inline-block;
+	height: 150px;
+	width: 100px;
+	background-color: pink;
+	border: 3px solid black;
+}
+
+.cardsDealer p, .cardsPlayer p{
+	margin-top: 30px;
+	margin-left: 15px;
+}
+
+#playerbuttons{
+	margin: 0px auto;
+	width: 600px;
+	height: 100px;
+	text-align: center;
+}
+
+#deal, #hit {
+	margin: 15px auto;
+	text-align: center;
+	width: 100px;
+	height: 50px;
+}
