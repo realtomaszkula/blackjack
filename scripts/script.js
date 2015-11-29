@@ -3,10 +3,21 @@ $(document).ready(function(){
 		deal();
 		var D = getCard();
 		var P = getCard();
-		var cardP = $('<div class=\'cardsPlayer\'>'+P.value+'<p>'+P.suit+'</p></div>');
-		var cardD = $('<div class=\'cardsDealer\'>'+D.value+'<p>'+D.suit+'</p></div>');
-		$(this).closest('#table').find('#cardsbot').append(cardP);
-		$(this).closest('#table').find('#cardstop').append(cardD);
+		var cardPvalue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
+		var cardDvalue = $('<div class=\'cardsDealer\'>'+D.value+'</div>');
+		var cardPsuit = $('<p>'+P.suit+'</p>');
+		var cardDsuit = $('<p>'+D.suit+'</p>');
+
+		$(this).closest('#table').find('#cardstop').append(cardDvalue);
+		$(this).closest('#table').find('.cardsDealer').append(cardDsuit);
+		$(this).closest('#table').find('#cardsbot').append(cardPvalue);
+		$(this).closest('#table').find('.cardsPlayer').append(cardPsuit);
+
+		
+
+
+
+
 		$(this).addClass('hidden');
 		$(this).closest('#table').find('#pass').fadeIn();
 		$(this).closest('#table').find('#hit').fadeIn();

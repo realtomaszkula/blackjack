@@ -60,7 +60,7 @@ h1{
 	margin: 25px auto;
 }
 
-.cardsDealer, .cardsPlayer{
+.cardsDealer, .cardsPlayer, .deckDealer{
 	font-size: 25px;
 	font-family: sans-serif;
 	margin-top: 10px;s
@@ -74,7 +74,7 @@ h1{
 	border: 3px solid black;
 }
 
-.cardsDealer p, .cardsPlayer p{
+.cardsDealer p, .cardsPlayer p, .deckDealer p{
 	margin-top: 30px;
 	margin-left: 15px;
 }
