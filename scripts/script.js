@@ -3,14 +3,14 @@ $(document).ready(function(){
 		deal();
 		var dealerCard1 = getCard();
 		var playerCard1 = getCard();
-		var playerCard1Value = $('<div class=\'cardsPlayer\'>'+playerCard1.value+'</div>');
-		var dealerCard1Value = $('<div class=\'cardsDealer\'>'+dealerCard1.value+'</div>');
+		var playerCard1Icon = $('<div class=\'cardsPlayer\'>'+playerCard1.icon+'</div>');
+		var dealerCard1Icon = $('<div class=\'cardsDealer\'>'+dealerCard1.icon+'</div>');
 		var playerCard1Suit = $(""+playerCard1.suit+"");
 		var dealerCard1Suit = $(""+dealerCard1.suit+"");
 
-		$(this).closest('#table').find('#cardstop').append(dealerCard1Value);
+		$(this).closest('#table').find('#cardstop').append(dealerCard1Icon);
 		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit);
-		$(this).closest('#table').find('#cardsbot').append(playerCard1Value);
+		$(this).closest('#table').find('#cardsbot').append(playerCard1Icon);
 		$(this).closest('#table').find('.cardsPlayer').append(playerCard1Suit);
 
 		$(this).addClass('hidden');
@@ -20,16 +20,16 @@ $(document).ready(function(){
 
 	$('#hit').on('click', function(){
 		var playerCard2 = getCard();
-		var playerCard2Value = $('<div class=\'cardsPlayer\'>'+playerCard2.value+'</div>');
+		var playerCard2Icon = $('<div class=\'cardsPlayer\'>'+playerCard2.icon+'</div>');
 		var playerCard2Suit = $(""+playerCard2.suit+"");
-		$(this).closest('#table').find('#cardsbot').append(playerCard2Value);
+		$(this).closest('#table').find('#cardsbot').append(playerCard2Icon);
 		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
 	});
 
 });
 
-var Card = function(value, suit, isDrawn){
-	this.value = value;
+var Card = function(icon, suit, isDrawn){
+	this.icon = icon;
 	this.suit = suit;
 	this.isDrawn = isDrawn;
 }
@@ -48,11 +48,11 @@ var deal = function () {
 
 	for(var i = 0; i < deck.length; i++){
 		var x = deck[i];
-		if(x.value == 10) x.value ='T';
-		if(x.value == 11) x.value ='J';
-		if(x.value == 12) x.value ='Q';
-		if(x.value == 13) x.value ='K';
-		if(x.value == 14) x.value ='A';
+		if(x.icon == 10) x.icon ='T';
+		if(x.icon == 11) x.icon ='J';
+		if(x.icon == 12) x.icon ='Q';
+		if(x.icon == 13) x.icon ='K';
+		if(x.icon == 14) x.icon ='A';
 	}
 };
 
