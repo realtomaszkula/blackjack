@@ -1,3 +1,6 @@
+var playerScore = 0;
+var dealerScore = 0;
+
 $(document).ready(function(){
 	$('#deal').on('click', function(){
 		deal();
@@ -30,6 +33,10 @@ $(document).ready(function(){
 		$(this).addClass('hidden');
 		$(this).closest('#table').find('#pass').fadeIn();
 		$(this).closest('#table').find('#hit').fadeIn();
+
+		playerScore += playerCard1.value; 
+		dealerScore +=  dealerCard2.value + dealerCard1;
+
 	});
 
 	$('#hit').on('click', function(){
@@ -38,34 +45,50 @@ $(document).ready(function(){
 		var playerCard2Suit = $(""+playerCard2.suit+"");
 		$(this).closest('#table').find('#cardsbot').append(playerCard2Icon);
 		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
+		
+		playerScore += playerCard2.value; console.log(playerScore);
+		if(playerScore > 21)alert('You lost the game!');
 	});
 
 	$('#pass').on('click', function(){
 		$(this).closest('#table').find('.cardsDealer').show();
 		$(this).closest('#table').find('#red').hide();
 
+		if(dealerScore < 17){
+
+			
+		}
+
+
+
+
+
+		if(playerScore > dealerScore)alert('You win!');
+		else alert('You lost!');
+
 	});
 
 
 });
 
-var Card = function(icon, suit, isDrawn){
+var Card = function(icon, suit, isDrawn,value){
 	this.icon = icon;
 	this.suit = suit;
 	this.isDrawn = isDrawn;
+	this.value = value;
 }
 
 var deck = [];
 var deal = function () {
 	var k = 0;
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i, "<img src=images/club.png></img>",false);
+		deck[k] = new Card(i, "<img src=images/club.png></img>",false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,"<img src=images/heart.png></img>",false);
+		deck[k] = new Card(i,"<img src=images/heart.png></img>",false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,"<img src=images/spade.png></img>",false);
+		deck[k] = new Card(i,"<img src=images/spade.png></img>",false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,"<img src=images/diamond.png></img>",false);
+		deck[k] = new Card(i,"<img src=images/diamond.png></img>",false,i);
 
 	for(var i = 0; i < deck.length; i++){
 		var x = deck[i];
@@ -74,6 +97,13 @@ var deal = function () {
 		if(x.icon == 12) x.icon ='Q';
 		if(x.icon == 13) x.icon ='K';
 		if(x.icon == 14) x.icon ='A';
+	}
+		for(var i = 0; i < deck.length; i++){
+		var x = deck[i];
+		if(x.value == 11) x.value = 10;
+		if(x.value == 12) x.value = 10;
+		if(x.value == 13) x.value = 10;
+		if(x.value == 14) x.value = 10;
 	}
 };
 
