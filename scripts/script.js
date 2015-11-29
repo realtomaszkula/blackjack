@@ -1,17 +1,28 @@
 $(document).ready(function(){
 	$('#deal').on('click', function(){
 		deal();
+
 		var dealerCard1 = getCard();
+		var dealerCard2 = getCard();
 		var playerCard1 = getCard();
+
 		var playerCard1Icon = $('<div class=\'cardsPlayer\'>'+playerCard1.icon+'</div>');
 		var dealerCard1Icon = $('<div class=\'cardsDealer\'>'+dealerCard1.icon+'</div>');
+		var dealerCard2Icon = $('<div class=\'cardsDealer\'>'+dealerCard2.icon+'</div>');
+
 		var playerCard1Suit = $(""+playerCard1.suit+"");
 		var dealerCard1Suit = $(""+dealerCard1.suit+"");
+		var dealerCard2Suit = $(""+dealerCard2.suit+"");
 
 		$(this).closest('#table').find('#cardstop').append(dealerCard1Icon);
 		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit);
+
+		$(this).closest('#table').find('#cardstop').append(dealerCard2Icon);
+		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2Suit).hide();
+
 		$(this).closest('#table').find('#cardsbot').append(playerCard1Icon);
 		$(this).closest('#table').find('.cardsPlayer').append(playerCard1Suit);
+
 
 		$(this).addClass('hidden');
 		$(this).closest('#table').find('#pass').fadeIn();
@@ -25,6 +36,12 @@ $(document).ready(function(){
 		$(this).closest('#table').find('#cardsbot').append(playerCard2Icon);
 		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
 	});
+
+	$('#pass').on('click', function(){
+		$(this).closest('#table').find('.cardsDealer').show();
+
+	});
+
 
 });
 
