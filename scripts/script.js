@@ -1,6 +1,7 @@
 var dealerScore = 0;
 var playerScore = 0;
 var playerAltScore = 0;
+var dealerAltScore = 0;
 var gameover = false;
 
 $(document).ready(function(){
@@ -48,9 +49,6 @@ $(document).ready(function(){
 	});
 		
 	$('#pass').on('click', function(){
-		$(this).closest('#table').find('.cardsDealer').show();
-		$(this).closest('#table').find('#red').hide();
-
 		if(dealerScore < 17){
 			var dealerCard3 = getCard();
 			var dealerCard3Icon = $('<div class=\'cardsDealer\'>'+dealerCard3.icon+'</div>');
@@ -124,13 +122,17 @@ var getCard = function(){
 
 
 var winner = function(winner) {
-	alert(winner+" wins!");
 	$('#playerbuttons').find('#hit').fadeOut();
 	$('#playerbuttons').find('#pass').fadeOut();
+	$('#table').find('.cardsDealer').show();
+	$('#table').find('#red').hide();
 	gameover = true;
+	alert(winner+" wins!");
 };
 
 var chop = function() {
+	$('#playerbuttons').find('#hit').fadeOut();
+	$('#playerbuttons').find('#pass').fadeOut();
 	alert("Draw!");
 };
 
@@ -145,7 +147,9 @@ var blackjackPlayer= function (value){
 	if (value == 11 ) {playerAltScore += value - 10; secondTime = true; }
 	else {playerAltScore += value;}
 	
-	if(playerScore > 21 && playerAltScore > 21) winner("Dealer"); 
+	if(playerScore > 21) playerScore = playerAltScore;
+	if(playerScore > 21) winner("Dealer"); 
+
 	console.log("d:"+dealerScore);
 	console.log(" p:"+playerScore);
 	console.log(" palt:"+playerAltScore);
@@ -153,7 +157,14 @@ var blackjackPlayer= function (value){
 
 var blackjackDealer = function (value){
 	dealerScore += value;
-	if(dealerScore>21) winner("Player");
+	if (value == 11 ) {dealerAltScore += value - 10;}
+	else {dealerAltScore += value;}
+
+	if(dealerScore > 21) dealerScore = dealerAltScore;
+	if(dealerScore > 21) winner("Player");
+
+
+
 	console.log("d:"+dealerScore);
 	console.log(" p:"+playerScore);
 	console.log(" palt:"+playerAltScore);
