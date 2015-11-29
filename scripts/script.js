@@ -133,6 +133,8 @@ var winner = function(winner) {
 var chop = function() {
 	$('#playerbuttons').find('#hit').fadeOut();
 	$('#playerbuttons').find('#pass').fadeOut();
+	$('#table').find('.cardsDealer').show();
+	$('#table').find('#red').hide();
 	alert("Draw!");
 };
 
