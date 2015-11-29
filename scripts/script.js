@@ -24,7 +24,7 @@ $(document).ready(function(){
 		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit).hide();;
 
 		$(this).closest('#table').find('#cardstop').append(dealerCard2Icon);
-		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2Suit)
+		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2Suit);
 
 		$(this).closest('#table').find('#cardsbot').append(playerCard1Icon);
 		$(this).closest('#table').find('.cardsPlayer').append(playerCard1Suit);
@@ -35,7 +35,7 @@ $(document).ready(function(){
 		$(this).closest('#table').find('#hit').fadeIn();
 
 		playerScore += playerCard1.value; 
-		dealerScore +=  dealerCard2.value + dealerCard1;
+		dealerScore +=  dealerCard2.value + dealerCard1.value;
 
 	});
 
@@ -46,7 +46,7 @@ $(document).ready(function(){
 		$(this).closest('#table').find('#cardsbot').append(playerCard2Icon);
 		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
 		
-		playerScore += playerCard2.value; console.log(playerScore);
+		playerScore += playerCard2.value; 
 		if(playerScore > 21)alert('You lost the game!');
 	});
 
@@ -55,16 +55,23 @@ $(document).ready(function(){
 		$(this).closest('#table').find('#red').hide();
 
 		if(dealerScore < 17){
-
+			var dealerCard3 = getCard();
+			var dealerCard3Icon = $('<div class=\'cardsDealer\'>'+dealerCard3.icon+'</div>');
+			$(this).closest('#table').find('#cardstop').append(dealerCard3Icon);
+			var dealerCard3Suit = $(""+dealerCard3.suit+"");
+			$(this).closest('#table').find('.cardsDealer:last').append(dealerCard3Suit);
 			
+			dealerScore += dealerCard3.value;
+			if(dealerScore>21)alert('You win!');
+			if(playerScore > dealerScore)alert('You win!');
+			else alert('You lost!');
+			console.log(dealerScore); 
+
 		}
-
-
-
-
-
-		if(playerScore > dealerScore)alert('You win!');
-		else alert('You lost!');
+		else{
+			if(playerScore > dealerScore)alert('You win!');
+			else alert('You lost!');
+		}
 
 	});
 
@@ -103,7 +110,7 @@ var deal = function () {
 		if(x.value == 11) x.value = 10;
 		if(x.value == 12) x.value = 10;
 		if(x.value == 13) x.value = 10;
-		if(x.value == 14) x.value = 10;
+		if(x.value == 14) x.value = 11;
 	}
 };
 
