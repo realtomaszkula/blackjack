@@ -43,7 +43,7 @@ h1{
 	width: 1000px;
 	border-radius: 200px;
 	border: 15px solid black;
-	background-color: #6b1f3c;
+	background-color: #01735c;
 }
 
 #cardstop, #cardsbot{
@@ -72,6 +72,10 @@ h1{
 	width: 100px;
 	background-color: white;
 	border: 3px solid black;
+}
+
+.deckDealer{
+	background-color: #c70e0e;
 }
 
 .cardsDealer img, .cardsPlayer img, .deckDealer img{

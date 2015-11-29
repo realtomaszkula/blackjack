@@ -1,17 +1,17 @@
 $(document).ready(function(){
 	$('#deal').on('click', function(){
 		deal();
-		var D = getCard();
-		var P = getCard();
-		var cardPvalue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
-		var cardDvalue = $('<div class=\'cardsDealer\'>'+D.value+'</div>');
-		var cardPsuit = $(""+P.suit+"");
-		var cardDsuit = $(""+D.suit+"");
+		var dealerCard1 = getCard();
+		var playerCard1 = getCard();
+		var playerCard1Value = $('<div class=\'cardsPlayer\'>'+playerCard1.value+'</div>');
+		var dealerCard1Value = $('<div class=\'cardsDealer\'>'+dealerCard1.value+'</div>');
+		var playerCard1Suit = $(""+playerCard1.suit+"");
+		var dealerCard1Suit = $(""+dealerCard1.suit+"");
 
-		$(this).closest('#table').find('#cardstop').append(cardDvalue);
-		$(this).closest('#table').find('.cardsDealer').append(cardDsuit);
-		$(this).closest('#table').find('#cardsbot').append(cardPvalue);
-		$(this).closest('#table').find('.cardsPlayer').append(cardPsuit);
+		$(this).closest('#table').find('#cardstop').append(dealerCard1Value);
+		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit);
+		$(this).closest('#table').find('#cardsbot').append(playerCard1Value);
+		$(this).closest('#table').find('.cardsPlayer').append(playerCard1Suit);
 
 		$(this).addClass('hidden');
 		$(this).closest('#table').find('#pass').fadeIn();
@@ -19,11 +19,11 @@ $(document).ready(function(){
 	});
 
 	$('#hit').on('click', function(){
-		var P = getCard();
-		var newCardValue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
-		var newCardSuit = $(""+P.suit+"");
-		$(this).closest('#table').find('#cardsbot').append(newCardValue);
-		$(this).closest('#table').find('.cardsPlayer:last').append(newCardSuit);
+		var playerCard2 = getCard();
+		var playerCard2Value = $('<div class=\'cardsPlayer\'>'+playerCard2.value+'</div>');
+		var playerCard2Suit = $(""+playerCard2.suit+"");
+		$(this).closest('#table').find('#cardsbot').append(playerCard2Value);
+		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
 	});
 
 });
