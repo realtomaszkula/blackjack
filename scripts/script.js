@@ -33,6 +33,7 @@ $(document).ready(function(){
 		$(this).addClass('hidden');
 		$(this).closest('#table').find('#pass').fadeIn();
 		$(this).closest('#table').find('#hit').fadeIn();
+		$(this).closest('#table').find('#newgame').fadeIn();
 
 		playerScore += playerCard1.value; 
 		dealerScore +=  dealerCard2.value + dealerCard1.value;

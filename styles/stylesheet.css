@@ -91,14 +91,14 @@ h1{
 	text-align: center;
 }
 
-#deal, #hit, #pass {
+#deal, #hit, #pass, #newgame {
 	margin: 15px auto;
 	text-align: center;
 	width: 100px;
 	height: 50px;
 }
 
-#pass, #hit{
+#pass, #hit, #newgame{
 	display: none;
 }
 
