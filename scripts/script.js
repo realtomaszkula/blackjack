@@ -134,12 +134,17 @@ var chop = function() {
 	alert("Draw!");
 };
 
-
+var secondTime = false;
 var blackjackPlayer= function (value){
 	playerScore += value;
-	if (value == 11 ) playerAltScore += value - 10;
-	else playerAltScore += value;
-
+	if (secondTime == true && value == 11) {
+		var x = prompt("type your hand combination");
+		var z = parseFloat(x);
+		playerScore = z;
+		}
+	if (value == 11 ) {playerAltScore += value - 10; secondTime = true; }
+	else {playerAltScore += value;}
+	
 	if(playerScore > 21 && playerAltScore > 21) winner("Dealer"); 
 	console.log("d:"+dealerScore);
 	console.log(" p:"+playerScore);
