@@ -5,18 +5,12 @@ $(document).ready(function(){
 		var P = getCard();
 		var cardPvalue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
 		var cardDvalue = $('<div class=\'cardsDealer\'>'+D.value+'</div>');
-		var cardPsuit = $('<p>'+P.suit+'</p>');
-		var cardDsuit = $('<p>'+D.suit+'</p>');
-
+		var cardPsuit = $("<img src=images/club.png></img>");
+		var cardDsuit = $("<img src=images/club.png></img>");
 		$(this).closest('#table').find('#cardstop').append(cardDvalue);
 		$(this).closest('#table').find('.cardsDealer').append(cardDsuit);
 		$(this).closest('#table').find('#cardsbot').append(cardPvalue);
 		$(this).closest('#table').find('.cardsPlayer').append(cardPsuit);
-
-		
-
-
-
 
 		$(this).addClass('hidden');
 		$(this).closest('#table').find('#pass').fadeIn();
@@ -25,8 +19,10 @@ $(document).ready(function(){
 
 	$('#hit').on('click', function(){
 		var P = getCard();
-		var newCard = $('<div class=\'cardsPlayer\'>'+P.value+'<p>'+P.suit+'</p></div>');
-		$(this).closest('#table').find('#cardsbot').append(newCard);
+		var newCardValue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
+		var newCardSuit = $("<img src=images/club.png></img>");
+		$(this).closest('#table').find('#cardsbot').append(newCardValue);
+		$(this).closest('#table').find('.cardsPlayer:last').append(newCardSuit);
 	});
 
 });
