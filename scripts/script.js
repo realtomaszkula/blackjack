@@ -5,8 +5,9 @@ $(document).ready(function(){
 		var P = getCard();
 		var cardPvalue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
 		var cardDvalue = $('<div class=\'cardsDealer\'>'+D.value+'</div>');
-		var cardPsuit = $("<img src=images/club.png></img>");
-		var cardDsuit = $("<img src=images/club.png></img>");
+		var cardPsuit = $(""+P.suit+"");
+		var cardDsuit = $(""+D.suit+"");
+
 		$(this).closest('#table').find('#cardstop').append(cardDvalue);
 		$(this).closest('#table').find('.cardsDealer').append(cardDsuit);
 		$(this).closest('#table').find('#cardsbot').append(cardPvalue);
@@ -20,7 +21,7 @@ $(document).ready(function(){
 	$('#hit').on('click', function(){
 		var P = getCard();
 		var newCardValue = $('<div class=\'cardsPlayer\'>'+P.value+'</div>');
-		var newCardSuit = $("<img src=images/club.png></img>");
+		var newCardSuit = $(""+P.suit+"");
 		$(this).closest('#table').find('#cardsbot').append(newCardValue);
 		$(this).closest('#table').find('.cardsPlayer:last').append(newCardSuit);
 	});
@@ -37,13 +38,13 @@ var deck = [];
 var deal = function () {
 	var k = 0;
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,'spade',false);
+		deck[k] = new Card(i, "<img src=images/club.png></img>",false);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,'heart',false);
+		deck[k] = new Card(i,"<img src=images/heart.png></img>",false);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,'diamond',false);
+		deck[k] = new Card(i,"<img src=images/spade.png></img>",false);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,'club',false);
+		deck[k] = new Card(i,"<img src=images/diamond.png></img>",false);
 
 	for(var i = 0; i < deck.length; i++){
 		var x = deck[i];
