@@ -13,21 +13,17 @@ $(document).ready(function(){
 		var dealerCard1Icon = $('<div class=\'cardsDealer\'>'+dealerCard1.icon+'</div>');
 		var dealerCard2Icon = $('<div class=\'cardsDealer\'>'+dealerCard2.icon+'</div>');
 
-		var playerCard1Suit = $(""+playerCard1.suit+"");
-		var dealerCard1Suit = $(""+dealerCard1.suit+"");
-		var dealerCard2Suit = $(""+dealerCard2.suit+"");
-
 		var fakeCard = $('<div class="deckDealer" id="red">CARD</div>');
 		$(this).closest('#table').find('#cardstop').append(fakeCard);
 
 		$(this).closest('#table').find('#cardstop').append(dealerCard1Icon);
-		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit).hide();;
+		$(this).closest('#table').find('.cardsDealer').append(dealerCard1.suit).hide();
 
 		$(this).closest('#table').find('#cardstop').append(dealerCard2Icon);
-		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2Suit);
+		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2.suit);
 
 		$(this).closest('#table').find('#cardsbot').append(playerCard1Icon);
-		$(this).closest('#table').find('.cardsPlayer').append(playerCard1Suit);
+		$(this).closest('#table').find('.cardsPlayer').append(playerCard1.suit);
 
 
 		$(this).addClass('hidden');
@@ -43,9 +39,8 @@ $(document).ready(function(){
 	$('#hit').on('click', function(){
 		var playerCard2 = getCard();
 		var playerCard2Icon = $('<div class=\'cardsPlayer\'>'+playerCard2.icon+'</div>');
-		var playerCard2Suit = $(""+playerCard2.suit+"");
 		$(this).closest('#table').find('#cardsbot').append(playerCard2Icon);
-		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
+		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2.suit);
 		
 		playerScore += playerCard2.value; 
 		if(playerScore > 21){
@@ -64,8 +59,7 @@ $(document).ready(function(){
 			var dealerCard3 = getCard();
 			var dealerCard3Icon = $('<div class=\'cardsDealer\'>'+dealerCard3.icon+'</div>');
 			$(this).closest('#table').find('#cardstop').append(dealerCard3Icon);
-			var dealerCard3Suit = $(""+dealerCard3.suit+"");
-			$(this).closest('#table').find('.cardsDealer:last').append(dealerCard3Suit);
+			$(this).closest('#table').find('.cardsDealer:last').append(dealerCard3.suit);
 			
 			dealerScore += dealerCard3.value;
 			if(dealerScore>21)alert('You win!');
@@ -99,14 +93,14 @@ var Card = function(icon, suit, isDrawn,value){
 var deck = [];
 var deal = function () {
 	var k = 0;
+	for (var i = 2; i<15; i++, k++) 
+		deck[k] = new Card(i, $("<img src=images/club.png></img>"),false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i, "<img src=images/club.png></img>",false,i);
+		deck[k] = new Card(i,$("<img src=images/club.png></img>"),false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,"<img src=images/heart.png></img>",false,i);
+		deck[k] = new Card(i,$("<img src=images/club.png></img>"),false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,"<img src=images/spade.png></img>",false,i);
-	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,"<img src=images/diamond.png></img>",false,i);
+		deck[k] = new Card(i,$("<img src=images/club.png></img>"),false,i);
 
 	for(var i = 0; i < deck.length; i++){
 		var x = deck[i];
