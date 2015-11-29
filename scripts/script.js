@@ -87,11 +87,11 @@ var deal = function () {
 	for (var i = 2; i<15; i++, k++) 
 		deck[k] = new Card(i, $("<img src=images/club.png></img>"),false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,$("<img src=images/club.png></img>"),false,i);
+		deck[k] = new Card(i,$("<img src=images/heart.png></img>"),false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,$("<img src=images/club.png></img>"),false,i);
+		deck[k] = new Card(i,$("<img src=images/spade.png></img>"),false,i);
 	for (var i = 2; i<15; i++, k++)
-		deck[k] = new Card(i,$("<img src=images/club.png></img>"),false,i);
+		deck[k] = new Card(i,$("<img src=images/diamond.png></img>"),false,i);
 
 	for(var i = 0; i < deck.length; i++){
 		var x = deck[i];
