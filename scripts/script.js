@@ -14,11 +14,14 @@ $(document).ready(function(){
 		var dealerCard1Suit = $(""+dealerCard1.suit+"");
 		var dealerCard2Suit = $(""+dealerCard2.suit+"");
 
+		var fakeCard = $('<div class="deckDealer" id="red">CARD</div>');
+		$(this).closest('#table').find('#cardstop').append(fakeCard);
+
 		$(this).closest('#table').find('#cardstop').append(dealerCard1Icon);
-		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit);
+		$(this).closest('#table').find('.cardsDealer').append(dealerCard1Suit).hide();;
 
 		$(this).closest('#table').find('#cardstop').append(dealerCard2Icon);
-		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2Suit).hide();
+		$(this).closest('#table').find('.cardsDealer:last').append(dealerCard2Suit)
 
 		$(this).closest('#table').find('#cardsbot').append(playerCard1Icon);
 		$(this).closest('#table').find('.cardsPlayer').append(playerCard1Suit);
@@ -39,6 +42,7 @@ $(document).ready(function(){
 
 	$('#pass').on('click', function(){
 		$(this).closest('#table').find('.cardsDealer').show();
+		$(this).closest('#table').find('#red').hide();
 
 	});
 

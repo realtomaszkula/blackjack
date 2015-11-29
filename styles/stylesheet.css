@@ -60,10 +60,10 @@ h1{
 	margin: 25px auto;
 }
 
-.cardsDealer, .cardsPlayer, .deckDealer, .hiddenDealer{
+.cardsDealer, .cardsPlayer, .deckDealer{
 	font-size: 25px;
 	font-family: sans-serif;
-	margin-top: 10px;s
+	margin-top: 10px;
 	margin-left: 15px;
 	padding-left: 15px;
 	padding-top: 15px;
