@@ -1,5 +1,6 @@
 var dealerScore = 0;
 var playerScore = 0;
+var playerAltScore = 0;
 var gameover = false;
 
 $(document).ready(function(){
@@ -57,12 +58,14 @@ $(document).ready(function(){
 			$(this).closest('#table').find('.cardsDealer:last').append(dealerCard3.suit);
 			blackjackDealer(dealerCard3.value);
 			if(gameover !== true){
-				if(playerScore > dealerScore) winner("Player");
+				if(playerScore == dealerScore) chop();
+				else if(playerScore > dealerScore) winner("Player");
 				else winner("Dealer");
 			}
 
 		} else{
-			if(playerScore > dealerScore) winner("Player");
+			if(playerScore == dealerScore) chop();
+			else if(playerScore > dealerScore) winner("Player");
 			else winner("Dealer");
 		}
 	});
@@ -127,12 +130,17 @@ var winner = function(winner) {
 	gameover = true;
 };
 
+var chop = function() {
+	alert("Draw!");
+};
+
 
 var blackjackPlayer= function (value){
 	playerScore += value;
-	if(playerScore>21) winner("Dealer"); 
+	if(playerScore > 21 ) winner("Dealer"); 
 	console.log(dealerScore);
 	console.log(playerScore);
+	console.log(playerAltScore);
 } 
 
 var blackjackDealer = function (value){
@@ -140,6 +148,6 @@ var blackjackDealer = function (value){
 	if(dealerScore>21) winner("Player");
 	console.log(dealerScore);
 	console.log(playerScore);
-
+	console.log(playerAltScore);
 } 
 
