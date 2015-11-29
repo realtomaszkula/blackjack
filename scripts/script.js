@@ -48,7 +48,12 @@ $(document).ready(function(){
 		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2Suit);
 		
 		playerScore += playerCard2.value; 
-		if(playerScore > 21)alert('You lost the game!');
+		if(playerScore > 21){
+			alert('You lost the game!');
+			$(this).fadeOut();
+			$(this).closest('#table').find('#pass').fadeOut();
+		}
+
 	});
 
 	$('#pass').on('click', function(){
@@ -67,11 +72,16 @@ $(document).ready(function(){
 			if(playerScore > dealerScore)alert('You win!');
 			else alert('You lost!');
 			console.log(dealerScore); 
+			
+			$(this).fadeOut();
+			$(this).closest('#table').find('#hit').fadeOut();
 
 		}
 		else{
 			if(playerScore > dealerScore)alert('You win!');
 			else alert('You lost!');
+			$(this).fadeOut();
+			$(this).closest('#table').find('#hit').fadeOut();
 		}
 
 	});
