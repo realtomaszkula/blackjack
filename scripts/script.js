@@ -1,5 +1,5 @@
-var playerScore = 0;
 var dealerScore = 0;
+var playerScore = 0;
 
 $(document).ready(function(){
 	$('#deal').on('click', function(){
@@ -8,7 +8,6 @@ $(document).ready(function(){
 		var dealerCard1 = getCard();
 		var dealerCard2 = getCard();
 		var playerCard1 = getCard();
-
 		var playerCard1Icon = $('<div class=\'cardsPlayer\'>'+playerCard1.icon+'</div>');
 		var dealerCard1Icon = $('<div class=\'cardsDealer\'>'+dealerCard1.icon+'</div>');
 		var dealerCard2Icon = $('<div class=\'cardsDealer\'>'+dealerCard2.icon+'</div>');
@@ -31,9 +30,10 @@ $(document).ready(function(){
 		$(this).closest('#table').find('#hit').fadeIn();
 		$(this).closest('#table').find('#newgame').fadeIn();
 
-		playerScore += playerCard1.value; 
-		dealerScore +=  dealerCard2.value + dealerCard1.value;
-
+		playerScore += playerCard1.value;
+		dealerScore += dealerCard2.value + dealerCard1.value;
+		if (playerScore == 21) gameover("Player");
+		if (dealerScore == 21) gameover("Dealer");
 	});
 
 	$('#hit').on('click', function(){
@@ -41,16 +41,10 @@ $(document).ready(function(){
 		var playerCard2Icon = $('<div class=\'cardsPlayer\'>'+playerCard2.icon+'</div>');
 		$(this).closest('#table').find('#cardsbot').append(playerCard2Icon);
 		$(this).closest('#table').find('.cardsPlayer:last').append(playerCard2.suit);
-		
-		playerScore += playerCard2.value; 
-		if(playerScore > 21){
-			alert('You lost the game!');
-			$(this).fadeOut();
-			$(this).closest('#table').find('#pass').fadeOut();
-		}
-
+		playerScore += playerCard2.value;
+		if(playerScore > 21) gameover("Dealer");
 	});
-
+		
 	$('#pass').on('click', function(){
 		$(this).closest('#table').find('.cardsDealer').show();
 		$(this).closest('#table').find('#red').hide();
@@ -60,23 +54,20 @@ $(document).ready(function(){
 			var dealerCard3Icon = $('<div class=\'cardsDealer\'>'+dealerCard3.icon+'</div>');
 			$(this).closest('#table').find('#cardstop').append(dealerCard3Icon);
 			$(this).closest('#table').find('.cardsDealer:last').append(dealerCard3.suit);
-			
+
 			dealerScore += dealerCard3.value;
-			if(dealerScore>21)alert('You win!');
-			if(playerScore > dealerScore)alert('You win!');
-			else alert('You lost!');
-			console.log(dealerScore); 
-			
-			$(this).fadeOut();
-			$(this).closest('#table').find('#hit').fadeOut();
+			if(dealerScore > 21) gameover("Player");
+			else{
+					if(playerScore > dealerScore) gameover("Player");
+					else gameover("Dealer");
+			}
 
 		}
 		else{
-			if(playerScore > dealerScore)alert('You win!');
-			else alert('You lost!');
-			$(this).fadeOut();
-			$(this).closest('#table').find('#hit').fadeOut();
+			if(playerScore > dealerScore) gameover("Player");
+			else gameover("Dealer");
 		}
+
 
 	});
 
@@ -88,7 +79,7 @@ var Card = function(icon, suit, isDrawn,value){
 	this.suit = suit;
 	this.isDrawn = isDrawn;
 	this.value = value;
-}
+};
 
 var deck = [];
 var deal = function () {
@@ -131,3 +122,12 @@ var getCard = function(){
 		}
 	}
 };
+
+
+var gameover = function(winner) {
+	alert(winner+" wins!");
+	$('#playerbuttons').find('#hit').fadeOut();
+	$('#playerbuttons').find('#pass').fadeOut();
+
+};
+
