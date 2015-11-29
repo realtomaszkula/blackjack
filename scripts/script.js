@@ -137,17 +137,20 @@ var chop = function() {
 
 var blackjackPlayer= function (value){
 	playerScore += value;
-	if(playerScore > 21 ) winner("Dealer"); 
-	console.log(dealerScore);
-	console.log(playerScore);
-	console.log(playerAltScore);
+	if (value == 11 ) playerAltScore += value - 10;
+	else playerAltScore += value;
+
+	if(playerScore > 21 && playerAltScore > 21) winner("Dealer"); 
+	console.log("d:"+dealerScore);
+	console.log(" p:"+playerScore);
+	console.log(" palt:"+playerAltScore);
 } 
 
 var blackjackDealer = function (value){
 	dealerScore += value;
 	if(dealerScore>21) winner("Player");
-	console.log(dealerScore);
-	console.log(playerScore);
-	console.log(playerAltScore);
+	console.log("d:"+dealerScore);
+	console.log(" p:"+playerScore);
+	console.log(" palt:"+playerAltScore);
 } 
 
